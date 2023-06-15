@@ -230,6 +230,7 @@ const gameUtils = {
         if (myChar.state == 'Jump') return
         myChar.state = state;
         myChar.stateStep = 1
+        clearTimeout(_timeoutId)
     },
     getSpeed: () => {
         return {
@@ -242,6 +243,7 @@ const gameUtils = {
 
 }
 
+var _timeoutId = ''
 var number = 0;
 var test = () => {
     setTimeout(() => {
@@ -272,6 +274,8 @@ var test = () => {
         if (!gameUtils.checkStep()) {
 
             myChar.stateStep = 1;
+            clearTimeout(_timeoutId)
+            // _timeoutId = setTimeout(i => myChar.state = 'Idle', 33)
             myChar.state = 'Idle'
             // myChar.state = gameUtils.getNextState()
         }
